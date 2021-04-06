@@ -31,8 +31,18 @@ module.exports = function(app, swig) {
     });
 
     app.post("/autor", function(req, res) {
-        res.send("Autor agregado:" + req.body.nombre + "<br>"
-            + " grupo :" + req.body.grupo + "<br>"
-            + " rol: " + req.body.rol);
+        let nombre = req.body.nombre;
+        let grupo = req.body.grupo;
+        let rol = req.body.rol;
+
+        if(typeof (req.body.nombre) == "undefined")
+            nombre = "El nombre no";
+        if(typeof  (req.body.grupo) == "undefined")
+            grupo = "El grupo no";
+        if(typeof (req.body.rol) == "undefined")
+            rol = "El rol no";
+        res.send("Autor agregado:" + nombre + "<br>"
+            + " grupo :" + grupo + "<br>"
+            + " rol: " + rol);
     });
 };
